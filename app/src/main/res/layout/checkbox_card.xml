@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/checkbox_card"
+    android:layout_width="250dp"
+    android:layout_height="200dp"
+    android:orientation="horizontal"
+    card_view:cardCornerRadius="35dp"
+    card_view:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000FF">
+
+        <TextView
+            android:id="@+id/check_title"
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="13dp"
+            android:fontFamily="@font/alfa_slab_one"
+            android:gravity="center"
+            android:text="Auto Cube in Exchange"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_dark"
+            android:textSize="27sp" />
+
+        <RadioGroup
+            android:id="@+id/TrueFalseGroup"
+            android:layout_width="218dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/check_title"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="45dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/falseBox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="False"
+                android:textColorLink="@color/Middle"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/trueBox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="True"
+                android:textColorLink="@color/Middle"
+                android:textSize="24sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

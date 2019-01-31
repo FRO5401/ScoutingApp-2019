@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewOptions">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/Edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_alignTop="@+id/save"
+            android:background="@color/Middle"
+            android:text="   Edit Current Layout   "
+            android:textColor="@color/white" />
+
+        <ScrollView
+            android:layout_width="524dp"
+            android:layout_height="393dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="344dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="88dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <GridView
+                    android:id="@+id/preview_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="3089dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:horizontalSpacing="20dp"
+                    android:nestedScrollingEnabled="false"
+                    android:numColumns="2"
+                    android:scrollbars="vertical"
+                    android:verticalSpacing="20dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:scrollbars="vertical">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="135dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:text="Type:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp" />
+
+        <Spinner
+            android:id="@+id/types"
+            android:layout_width="349dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="224dp"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/modes"
+            android:layout_width="200dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="279dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="135dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="78dp"
+            android:text="Title:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="135dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="278dp"
+            android:text="Mode:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/TitleOption"
+            android:layout_width="349dp"
+            android:layout_height="43dp"
+            android:layout_alignBaseline="@+id/textView4"
+            android:layout_alignEnd="@+id/types"
+            android:layout_marginEnd="1dp"
+            android:ems="10"
+            android:hint="Title"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="135dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="160dp"
+            android:text="Choice 1:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/OptionTwo"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView6"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="219dp"
+            android:ems="10"
+            android:hint="Two"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="135dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="212dp"
+            android:layout_marginTop="160dp"
+            android:text="Choice 2:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/OneOption"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="221dp"
+            android:ems="10"
+            android:hint="One"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="135dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="393dp"
+            android:layout_marginTop="160dp"
+            android:text="Choice 3:"
+            android:textColor="@android:color/background_dark"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/OptionThree"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView6"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="184dp"
+            android:layout_marginTop="219dp"
+            android:ems="10"
+            android:hint="Three"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/OneOption"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="61dp"
+            android:background="@color/colorPrimary"
+            android:text="Add"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="134dp"
+            android:text="(Only needed for Multiple Choice)" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="455dp"
+            android:layout_marginEnd="57dp"
+            android:layout_marginBottom="29dp"
+            android:background="@color/Ends"
+            android:text="SAVE"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:background="@color/white">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="261dp"
+            android:adjustViewBounds="true"
+            android:paddingTop="15dp"
+            android:src="@drawable/firstlogo" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="533dp"
+            android:layout_height="152dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="275dp"
+            android:fontFamily="casual"
+            android:lineSpacingExtra="8sp"
+            android:text="@string/app_description"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_dark"
+            android:textFontWeight="1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="@string/app_description" />
+    </RelativeLayout>
+
+</FrameLayout>

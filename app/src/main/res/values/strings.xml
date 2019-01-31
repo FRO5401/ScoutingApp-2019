@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FROScouting</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Scouting 5401</string>
+    <string name="nav_header_subtitle">damienolsen2001@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_description">This app has primarily one purpose, and that is to teach you about the importance of scouting, through scouting!</string>
+    <string name="scouting_default">#TO BEGIN# \nCLICK THE PRE TAB</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

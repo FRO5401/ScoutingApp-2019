@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/choice_card"
+    android:layout_width="250dp"
+    android:layout_height="200dp"
+    android:orientation="horizontal"
+    card_view:cardCornerRadius="35dp"
+    card_view:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/choice_title"
+            android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:elevation="@dimen/activity_horizontal_margin"
+            android:fontFamily="@font/alfa_slab_one"
+            android:gravity="center"
+            android:lineSpacingExtra="-10sp"
+            android:text="Has this Helped?"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
+
+        <RadioGroup
+            android:id="@+id/ChoiceGroup"
+            android:layout_width="208dp"
+            android:layout_height="118dp"
+            android:layout_below="@+id/choice_title"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="11dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/Choice1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="RadioButton"
+                android:textSize="14sp"
+                android:typeface="serif" />
+
+            <RadioButton
+                android:id="@+id/Choice2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="RadioButton"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/Choice3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="RadioButton"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

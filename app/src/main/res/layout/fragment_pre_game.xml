@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".PreGame">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="100dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/MATCH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="430dp"
+                    android:fontFamily="@font/alfa_slab_one"
+                    android:text="MATCH:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/TEAM"
+                    android:layout_width="184dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="59dp"
+                    android:layout_marginTop="152dp"
+                    android:fontFamily="@font/alfa_slab_one"
+                    android:text="TEAM #:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/NAME"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="58dp"
+                    android:fontFamily="@font/alfa_slab_one"
+                    android:text="NAME:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/POSITION"
+                    android:layout_width="184dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="249dp"
+                    android:fontFamily="@font/alfa_slab_one"
+                    android:text="POSITION:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="30sp" />
+
+                <RadioGroup
+                    android:id="@+id/PreGroup"
+                    android:layout_width="458dp"
+                    android:layout_height="85dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="73dp"
+                    android:layout_marginTop="316dp"
+                    android:layout_marginEnd="69dp"
+                    android:backgroundTint="@color/Ends"
+                    android:foregroundTint="@color/white"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/alfa_slab_one"
+                        android:text="LEFT"
+                        android:textSize="24sp" />
+
+                    <RadioButton
+                        android:id="@+id/Center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/alfa_slab_one"
+                        android:text="CENTER"
+                        android:textSize="24sp" />
+
+                    <RadioButton
+                        android:id="@+id/Right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/alfa_slab_one"
+                        android:text="RIGHT"
+                        android:textSize="24sp" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/AllowScout"
+                    android:layout_width="345dp"
+                    android:layout_height="117dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="126dp"
+                    android:layout_marginEnd="129dp"
+                    android:layout_marginBottom="87dp"
+                    android:background="@color/colorPrimary"
+                    android:fontFamily="@font/alfa_slab_one"
+                    android:text="Start Scouting"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/MatchText"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="212dp"
+                    android:layout_marginTop="420dp"
+                    android:layout_marginEnd="228dp"
+                    android:ems="10"
+                    android:fontFamily="@font/alfa_slab_one"
+                    android:inputType="number"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/team_spinner"
+                    android:layout_width="275dp"
+                    android:layout_height="51dp"
+                    android:layout_alignTop="@+id/TEAM"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="256dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="70dp" />
+
+                <EditText
+                    android:id="@+id/NameText"
+                    android:layout_width="370dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/NAME"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="209dp"
+                    android:layout_marginTop="-9dp"
+                    android:layout_marginEnd="22dp"
+                    android:ems="10"
+                    android:fontFamily="@font/alfa_slab_one"
+                    android:inputType="textPersonName"
+                    android:selectAllOnFocus="true"
+                    android:textSize="24sp" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</FrameLayout>
