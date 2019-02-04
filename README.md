@@ -1,1 +1,0 @@
-# ScoutingApp-2019
