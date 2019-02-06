@@ -7,6 +7,13 @@ import retrofit2.http.Field;
 
 public class SerializedData {
 
+    /*
+        This class allows for the POST method to send the data over by
+        SETTING
+        GETTING
+        INSTANTIATING
+    */
+    
     @SerializedName("entry.1955826634")
     @Expose
     private String Scout;

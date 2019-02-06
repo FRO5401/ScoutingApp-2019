@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //After toolbar is instantiated, this allows for the navigation and toolbar to be created
-        //
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -48,15 +46,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //This loads the homepage when the app initially loads!
-        //
-
         HomeFragment home = new HomeFragment();
         androidx.fragment.app.FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.FragMain, home).commit();
     }
 
     //Method makes sure that the user cannot back out of the scouting/creation tabs unless they wish to via the Navigation menu!
-    //
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "Please use the Navigation Menu", Toast.LENGTH_LONG).show();
@@ -93,7 +88,6 @@ public class MainActivity extends AppCompatActivity
 
         //Each one of these if statements allow for another class to load, thus generating a new page
         //Each name correlates to the page that the tab opens
-        //
         if (id == R.id.nav_home) {
             HomeFragment home = new HomeFragment();
             androidx.fragment.app.FragmentManager fragmentManager = getSupportFragmentManager();
@@ -112,7 +106,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         //Though the fragment should NEVER be null, this is an exception that allows the app not to crash
-        //
         if(fragment != null){
             androidx.fragment.app.FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -120,7 +113,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         //This is for the navigation drawer to close
-        //
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

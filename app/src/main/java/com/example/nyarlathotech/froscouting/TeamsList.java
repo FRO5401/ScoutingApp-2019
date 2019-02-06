@@ -1,6 +1,5 @@
 package com.example.nyarlathotech.froscouting;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -23,17 +22,12 @@ import java.io.IOException;
 
 import static android.os.Environment.getExternalStorageDirectory;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
+//This class is pretty simple, takes user input (WITHOUT SPACES) and creates a text file that can be read
 public class TeamsList extends Fragment {
-
 
     public TeamsList() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

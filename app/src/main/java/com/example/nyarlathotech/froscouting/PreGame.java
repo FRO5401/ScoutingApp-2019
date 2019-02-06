@@ -157,8 +157,6 @@ public class PreGame extends Fragment {
             }
         });
 
-
-
         return pregameview;
 
     }

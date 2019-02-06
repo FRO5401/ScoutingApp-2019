@@ -100,48 +100,47 @@ public class NewOptions extends Fragment {
 
                 try{
 
+                    final String path = getExternalStorageDirectory().getAbsolutePath() + "/Scouting/Layouts";
+                    File pathCreate = new File(path);
 
-                final String path = getExternalStorageDirectory().getAbsolutePath() + "/Scouting/Layouts";
-                File pathCreate = new File(path);
-
-                if(!pathCreate.exists()) {
-                    pathCreate.mkdirs();
-                }
-
-                FileReader teams =  new FileReader(path + "/layout.txt");
-                final BufferedReader test = new BufferedReader(teams);
-                final String testData = test.readLine();
-                final String[] newBois = testData.substring(1,testData.length()-1).split(",");
-
-                SOList.clear();
-                AddedList.clear();
-
-                if(newBois.length < 4){
-                    for(int i = 0; i < 1; i++){
-                        SOList.add(new ScoutingOptions(new String[] {"3", "No Options, Refresh Page"," "," "," ", " "," ",}));
-                    }
-                } else {
-
-                    for(int i = 0; i < newBois.length; i++){
-                        AddedList.add(newBois[i].trim());
+                    if(!pathCreate.exists()) {
+                        pathCreate.mkdirs();
                     }
 
-                    for (int i = 0; i < newBois.length; i+=7) {
-                        SOList.add(new ScoutingOptions(new String[]{newBois[i].trim(), newBois[i + 1].trim(), newBois[i + 2].trim(), newBois[i + 3].trim(), newBois[i + 4].trim(), newBois[i + 5].trim(), newBois[i + 6].trim()}));
+                    FileReader teams =  new FileReader(path + "/layout.txt");
+                    final BufferedReader test = new BufferedReader(teams);
+                    final String testData = test.readLine();
+                    final String[] newBois = testData.substring(1,testData.length()-1).split(",");
+
+                    SOList.clear();
+                    AddedList.clear();
+
+                    if(newBois.length < 4){
+                        for(int i = 0; i < 1; i++){
+                            SOList.add(new ScoutingOptions(new String[] {"3", "No Options, Refresh Page"," "," "," ", " "," ",}));
+                        }
+                    } else {
+
+                        for(int i = 0; i < newBois.length; i++){
+                            AddedList.add(newBois[i].trim());
+                        }
+
+                        for (int i = 0; i < newBois.length; i+=7) {
+                            SOList.add(new ScoutingOptions(new String[]{newBois[i].trim(), newBois[i + 1].trim(), newBois[i + 2].trim(), newBois[i + 3].trim(), newBois[i + 4].trim(), newBois[i + 5].trim(), newBois[i + 6].trim()}));
+                        }
+
+                        final ScoutingAdapter newScouting = new ScoutingAdapter(mContext, SOList);
+                        Preview.setAdapter(newScouting);
+
+                        int NumRows = ((((newBois.length + 7) / 7)) / 2);
+
+                        ViewGroup.LayoutParams gridHeight =  Preview.getLayoutParams();
+                        gridHeight.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ((NumRows - 1) * 220), mContext.getResources().getDisplayMetrics());
+                        Preview.setLayoutParams(gridHeight);
+
+                        Toast.makeText(mContext, "Current Layout Imported", Toast.LENGTH_SHORT).show();
+
                     }
-
-                    final ScoutingAdapter newScouting = new ScoutingAdapter(mContext, SOList);
-                    Preview.setAdapter(newScouting);
-
-                    int NumRows = ((((newBois.length + 7) / 7)) / 2);
-
-                    ViewGroup.LayoutParams gridHeight =  Preview.getLayoutParams();
-                    gridHeight.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ((NumRows - 1) * 220), mContext.getResources().getDisplayMetrics());
-                    Preview.setLayoutParams(gridHeight);
-
-                    Toast.makeText(mContext, "Current Layout Imported", Toast.LENGTH_SHORT).show();
-
-                }
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -227,7 +226,6 @@ public class NewOptions extends Fragment {
                 ViewGroup.LayoutParams gridHeight = Preview.getLayoutParams();
                 gridHeight.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ((NumRows -1) * 220), mContext.getResources().getDisplayMetrics());
                 Preview.setLayoutParams(gridHeight);
-
 
             }
         });

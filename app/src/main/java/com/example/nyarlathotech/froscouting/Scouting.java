@@ -57,8 +57,8 @@ import static android.os.Environment.getExternalStorageDirectory;
  */
 public class Scouting extends Fragment {
 
+    //Array that all Scouting Cards are added to
     private ArrayList<ScoutingOptions> SList = new ArrayList<>();
-    private ArrayList<String> AddedList = new ArrayList<String>();
     private Context mContext;
 
     public Scouting() {
@@ -90,17 +90,25 @@ public class Scouting extends Fragment {
 
             if(newBois.length < 4){
                 for(int i = 0; i < 1; i++){
+                    //Adds null card if theres not anything in the text file
                     SList.add(new ScoutingOptions(new String[] {"3", "No Options"," "," "," ", " "," ",}));
                 }
             } else {
 
+                    //Goes through text file array and sorts accordingly
                     for(int i = 0; i < newBois.length; i+=7) {
                         SList.add(new ScoutingOptions(new String[] {newBois[i].trim(), newBois[i+1].trim(), newBois[i+2].trim(), newBois[i+3].trim(), newBois[i+4].trim(), newBois[i+5].trim(), newBois[i+6].trim()}));
                     }
 
+                    //Sets scouting adapter to the gridview
                     final ScoutingAdapter newScouting = new ScoutingAdapter(mContext, SList);
                     scoutingOptions.setAdapter(newScouting);
 
+
+                    //THIS NEEDS TO BE FIXED SO BE WARNED
+                    //THIS WAS A LAZY WAY OF ADJUSTING HEIGHT FOR THE OBJECTS
+                    //WILL NOT WORK ON SMALLER SCREEN SIZES SO IT WILL HAVE TO BE ADJUSTED SLIGHTLY ONCE WE CHANGE TABLETS
+                    //WILL MOST LIKELY FIX WITH CUSTOM GRIDVIEW OBJECT
                     int NumRows = ((((newBois.length+7)/7))/2);
 
                     ViewGroup.LayoutParams gridHeight = scoutingOptions.getLayoutParams();
@@ -203,6 +211,8 @@ public class Scouting extends Fragment {
         return Scouting;
     }
 
+
+    //This method sends data to sheets if the internet is available
     public void sendData(String[] params) {
 
         Retrofit.Builder builder = new Retrofit.Builder()
@@ -246,6 +256,7 @@ public class Scouting extends Fragment {
         });
     }
 
+    //This method saves data locally to the tablet in said directory even if there is internet available
     public void sendLocal(String[] params){
 
         String pathLocal = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Scouting/Data";

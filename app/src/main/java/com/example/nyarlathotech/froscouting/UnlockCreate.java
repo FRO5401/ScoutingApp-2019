@@ -12,10 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
+//This class is a barrier for people to make edits to, though the password is hardcoded soooo only programmers should know it
 public class UnlockCreate extends Fragment {
 
 
@@ -35,6 +32,7 @@ public class UnlockCreate extends Fragment {
         Button Cancel = Unlock.findViewById(R.id.cancel);
         final EditText password = Unlock.findViewById(R.id.password);
 
+        //Allows the user to edit the teams used by the team for data collection
         Teams.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +48,7 @@ public class UnlockCreate extends Fragment {
             }
         });
 
+        //Allows users to edit the apps layout for the team to use
         Layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +63,7 @@ public class UnlockCreate extends Fragment {
             }
         });
 
+        //Allows user to cancel password input/creation of cards/teams
         Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

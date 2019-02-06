@@ -10,9 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+//Haven't added any yet lol but this class would just need
+        //A BUNCH OF VIDEO PLAYERS INSTANTIATED PROBABLY
 public class Tutorials extends Fragment {
 
 

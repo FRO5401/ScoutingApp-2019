@@ -10,7 +10,7 @@ public class ScoutingOptions {
     private String data;
     private String period;
 
-    //SET Method Basically
+    //Creates a class with data filled from other pages
     public ScoutingOptions(String[] Options){
         this.cardType = Options[0];
         this.title = Options[1];
@@ -20,20 +20,28 @@ public class ScoutingOptions {
         this.period = Options[5];
     }
 
+    //Gets the type of card that it'll be (ADD/SUB, T/F, TEXTINPUT, ETC)
     public String getCardType(){ return cardType;}
 
+    //Gets the title of the card (FUNCTION EX. AMOUNT OF JAWN)
     public String getCardTitle(){ return title;}
 
+    //Gets the first option for multiple choice
     public String getCardOne(){ return buttonOne;}
 
+    //Gets the second option for multiple choice
     public String getCardTwo(){ return buttonTwo;}
 
+    //Gets the third option for multiple choice
     public String getCardThree(){ return buttonThree;}
 
+    //Gets the mode the card is in (AUTO, TELEOP, END)
     public String getCardPeriod(){ return period;}
 
+    //Allows the users data to be collected
     public String getData(){ return data;}
 
+    //Allows the data to be set to null or nothing
     public void setData(String data) {
         this.data = data;
     }

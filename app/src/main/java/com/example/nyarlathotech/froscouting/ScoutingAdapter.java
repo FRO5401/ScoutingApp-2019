@@ -34,32 +34,40 @@ public class ScoutingAdapter extends BaseAdapter {
     private ArrayList<ScoutingOptions> Options;
     LayoutInflater layoutInflate;
 
+    //Instantiates layout
     public ScoutingAdapter(Context c, ArrayList<ScoutingOptions> OptionsList){
         this.mContext = c;
         this.Options = OptionsList;
         this.layoutInflate = LayoutInflater.from(c);
     }
 
+    //Gets amount of cards
     public int getCount(){
         return Options.size();
     }
 
+    //Gets specific card
     public Object getItem(int i){
         return Options.get(i);
     }
 
+    //Gets card id
     public long getItemId(int i){
         return i;
     }
 
+    //Adds an extra/new card to the arra
     public void addOption(ScoutingOptions option){ this.Options.add(option);}
 
+    //Returns the data inputted by the user
     public String getScoutingData(int i){ return Options.get(i).getData(); }
 
+    //Presents the card in the view
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         final ScoutingOptions so = (ScoutingOptions) this.getItem(i);
 
+        //Creates add/subtract card
         if (so.getCardType().equals("1") || so.getCardType().equals(" 1") || so.getCardType().equals("  1")) {
 
             if (view == null) {
@@ -113,6 +121,7 @@ public class ScoutingAdapter extends BaseAdapter {
 
         }
 
+        //Creates true/false card
         if(so.getCardType().equals("2") || so.getCardType().equals(" 2") || so.getCardType().equals("  2")) {
 
             if (view == null) {
@@ -161,6 +170,7 @@ public class ScoutingAdapter extends BaseAdapter {
             }
         }
 
+        //Creates textInput card
         if(so.getCardType().equals("3") || so.getCardType().equals(" 3") || so.getCardType().equals("  3")){
 
             if (view == null) {
@@ -213,6 +223,7 @@ public class ScoutingAdapter extends BaseAdapter {
             }
         }
 
+        //Creates multiple choice card
         if(so.getCardType().equals("4") || so.getCardType().equals(" 4") || so.getCardType().equals("  4")){
 
             if (view == null) {
@@ -266,6 +277,8 @@ public class ScoutingAdapter extends BaseAdapter {
                 }
 
             }
+
+         //Creates placeholder card
         } else if(so.getCardType().equals("5") || so.getCardType().equals(" 5") || so.getCardType().equals("  5")){
             if (view == null) {
                 view = layoutInflate.inflate(R.layout.placeholder_card, viewGroup, false);

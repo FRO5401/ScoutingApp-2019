@@ -9,7 +9,15 @@ import retrofit2.http.Query;
 
 public interface ScoutingPost {
 
-    //class posts admin data to salesforce url
+    /*
+        This class sends or "posts" data to google sheets
+        Each entry is an object in HTML for sheets to read, and the correlating name is the object
+        All the vague objects are meant for customization (Obj1-32)
+
+        **NOTE**
+        **IF YOU DON'T UNDERSTAND LEARN RETROFIT **
+    */
+
     @POST("formResponse")
     @FormUrlEncoded
     Call<SerializedData> savePost(@Field("entry.1955826634") String Scout,
