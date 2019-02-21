@@ -41,7 +41,8 @@ public class UnlockCreate extends Fragment {
                     androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.FragMain, team).commit();
                     Toast.makeText(getContext(), "TEAMS LIST", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else{
                     Toast.makeText(getContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
                 }
 
@@ -57,7 +58,8 @@ public class UnlockCreate extends Fragment {
                     androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.FragMain, newOption).commit();
                     Toast.makeText(getContext(), "LAYOUT CREATOR", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else{
                     Toast.makeText(getContext(), "Password Incorrect", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -75,9 +77,8 @@ public class UnlockCreate extends Fragment {
         });
 
 
+        //Returns View
         return Unlock;
-
-
     }
 
 }

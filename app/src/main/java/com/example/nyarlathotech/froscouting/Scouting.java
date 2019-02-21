@@ -58,7 +58,7 @@ import static android.os.Environment.getExternalStorageDirectory;
 public class Scouting extends Fragment {
 
     //Array that all Scouting Cards are added to
-    private ArrayList<ScoutingOptions> SList = new ArrayList<>();
+    private ArrayList<ScoutingOptions> scoutingList = new ArrayList<>();
     private Context mContext;
 
     public Scouting() {
@@ -71,10 +71,11 @@ public class Scouting extends Fragment {
         // Inflate the layout for this fragment
         View Scouting = inflater.inflate(R.layout.fragment_scouting, container, false);
 
-        try {
-            mContext = getContext();
+        mContext = getContext();
 
-            final GridView scoutingOptions = Scouting.findViewById(R.id.scouting_options);
+        try {
+
+            final CustomGrid scoutingOptions = Scouting.findViewById(R.id.scouting_options);
 
             final String path = getExternalStorageDirectory().getAbsolutePath() + "/Scouting/Layouts";
             File pathCreate = new File(path);
@@ -84,36 +85,26 @@ public class Scouting extends Fragment {
             }
 
             FileReader teams =  new FileReader(path + "/layout.txt");
-            final BufferedReader test = new BufferedReader(teams);
-            final String testData = test.readLine();
-            final String[] newBois = testData.substring(1,testData.length()-1).split(",");
+            final BufferedReader reader = new BufferedReader(teams);
+            final String data = reader.readLine();
+            final String[] newDataFromFile = data.substring(1,data.length()-1).split(",");
 
-            if(newBois.length < 4){
+            if(newDataFromFile.length < 4){
                 for(int i = 0; i < 1; i++){
-                    //Adds null card if theres not anything in the text file
-                    SList.add(new ScoutingOptions(new String[] {"3", "No Options"," "," "," ", " "," ",}));
+                    //Adds null card if there's not anything in the text file
+                    scoutingList.add(new ScoutingOptions(new String[] {"3", "No Options"," "," "," ", " "," ",}));
                 }
             } else {
 
-                    //Goes through text file array and sorts accordingly
-                    for(int i = 0; i < newBois.length; i+=7) {
-                        SList.add(new ScoutingOptions(new String[] {newBois[i].trim(), newBois[i+1].trim(), newBois[i+2].trim(), newBois[i+3].trim(), newBois[i+4].trim(), newBois[i+5].trim(), newBois[i+6].trim()}));
-                    }
+                //Goes through text file array and sorts accordingly
+                for(int i = 0; i < newDataFromFile.length; i+=7) {
+                    scoutingList.add(new ScoutingOptions(new String[] {newDataFromFile[i].trim(), newDataFromFile[i+1].trim(), newDataFromFile[i+2].trim(), newDataFromFile[i+3].trim(), newDataFromFile[i+4].trim(), newDataFromFile[i+5].trim(), newDataFromFile[i+6].trim()}));
+                }
 
-                    //Sets scouting adapter to the gridview
-                    final ScoutingAdapter newScouting = new ScoutingAdapter(mContext, SList);
-                    scoutingOptions.setAdapter(newScouting);
-
-
-                    //THIS NEEDS TO BE FIXED SO BE WARNED
-                    //THIS WAS A LAZY WAY OF ADJUSTING HEIGHT FOR THE OBJECTS
-                    //WILL NOT WORK ON SMALLER SCREEN SIZES SO IT WILL HAVE TO BE ADJUSTED SLIGHTLY ONCE WE CHANGE TABLETS
-                    //WILL MOST LIKELY FIX WITH CUSTOM GRIDVIEW OBJECT
-                    int NumRows = ((((newBois.length+7)/7))/2);
-
-                    ViewGroup.LayoutParams gridHeight = scoutingOptions.getLayoutParams();
-                    gridHeight.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ((NumRows-1) * 217), mContext.getResources().getDisplayMetrics());
-                    scoutingOptions.setLayoutParams(gridHeight);
+                //Sets scouting adapter to the gridview and expand it
+                final ScoutingAdapter newScouting = new ScoutingAdapter(mContext, scoutingList);
+                scoutingOptions.setAdapter(newScouting);
+                scoutingOptions.setExpanded(true);
 
                 final Button SUBMIT = Scouting.findViewById(R.id.SUBMIT);
 
@@ -181,6 +172,7 @@ public class Scouting extends Fragment {
                                         PreGame pre = new PreGame();
                                         androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
                                         fragmentManager.beginTransaction().replace(R.id.FragMain, pre).commit();
+                                        fragmentManager.beginTransaction().replace(R.id.FragMain, pre).commit();
 
                                         dialog.dismiss();
 
@@ -200,11 +192,14 @@ public class Scouting extends Fragment {
                 });
             }
 
-        }catch(NullPointerException e){
+        }
+        catch(NullPointerException e){
             System.out.print("ScoutingView:" + e);
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -223,31 +218,31 @@ public class Scouting extends Fragment {
 
         ScoutingPost userService = retrofit.create(ScoutingPost.class);
 
-         Call<SerializedData> userCall = userService.savePost(params[0], params[1], params[2], params[3],
-                                                            params[4],params[5],params[6],params[7],
-                                                            params[8],params[9],params[10],params[11],
-                                                            params[12],params[13],params[14],params[15],
-                                                            params[16],params[17],params[18],params[19],
-                                                            params[20],params[21],params[22],params[23],
-                                                            params[24],params[25],params[26],params[27],
-                                                            params[28],params[29],params[30],params[30],
-                                                            params[32],params[33]);
+        Call<SerializedData> userCall = userService.savePost(params[0], params[1], params[2], params[3],
+                                                             params[4],params[5],params[6],params[7],
+                                                             params[8],params[9],params[10],params[11],
+                                                             params[12],params[13],params[14],params[15],
+                                                             params[16],params[17],params[18],params[19],
+                                                             params[20],params[21],params[22],params[23],
+                                                             params[24],params[25],params[26],params[27],
+                                                             params[28],params[29],params[30],params[30],
+                                                             params[32],params[33]);
 
 
         userCall.enqueue(new Callback<SerializedData>() {
             @Override
             public void onResponse(Call<SerializedData> call, Response<SerializedData> response) {
-
                 try {
                     Toast.makeText(mContext, "Submitted to Cloud!!", Toast.LENGTH_LONG).show();
                     Log.d("Response: ",response.body().toString());
 
-                } catch (NullPointerException e) {
+                }
+                catch (NullPointerException e) {
                     Toast.makeText(mContext, e.toString(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
+            //This onFailure says the same due to Sheets needing a TimeStamp that is clearly not provided
             @Override
             public void onFailure(Call<SerializedData> call, Throwable t) {
                 Toast.makeText(mContext, "Submitted to Cloud!!", Toast.LENGTH_LONG).show();
@@ -264,7 +259,8 @@ public class Scouting extends Fragment {
 
         if(!local.exists()) {
             local.mkdirs();
-        } else {
+        }
+        else {
 
             FileOutputStream localData = null;
 
@@ -283,12 +279,14 @@ public class Scouting extends Fragment {
 
                 File data = new File(local, "data" + number + ".csv");
                 localData = new FileOutputStream(data, true);
+
                 if(data.exists()){
                     for(int i = 0; i < params.length; i++){
                         localData.write((params[i]+",").getBytes());
                     }
                     localData.write("\n".getBytes());
-                } else if (data.exists()) {
+                }
+                else if (data.exists()) {
                     FileOutputStream localData2 = new FileOutputStream(data, true);
                     for(int i = 0; i < params.length; i++){
                         localData2.write((params[i]+",").getBytes());
@@ -296,15 +294,19 @@ public class Scouting extends Fragment {
                     localData2.write("\n".getBytes());
                 }
 
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 e.printStackTrace();
-            } finally {
+            }
+            finally {
                 if (localData != null) {
                     try {
                         localData.close();
-                    } catch (IOException e) {
+                    }
+                    catch (IOException e) {
                         e.printStackTrace();
                     }
                 }

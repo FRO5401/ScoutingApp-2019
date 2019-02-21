@@ -22,7 +22,7 @@ import java.io.IOException;
 
 import static android.os.Environment.getExternalStorageDirectory;
 
-//This class is pretty simple, takes user input (WITHOUT SPACES) and creates a text file that can be read
+//This class is pretty simple, takes user inputand creates a text file that can be read
 public class TeamsList extends Fragment {
 
     public TeamsList() {
@@ -38,33 +38,47 @@ public class TeamsList extends Fragment {
         final TextInputEditText teamsText = Teams.findViewById(R.id.edittext);
         Button submitButton = Teams.findViewById(R.id.SUBMIT);
 
+        /*
+            This onClickListener allows for the user to...
+                *Submit team data
+                *Create a text file that they can copy afterwards
+         */
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Path creation and new File
                 String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Scouting/Teams";
                 File teamPath = new File(path);
 
-                if(!teamPath.exists()) {
+                if(!teamPath.exists()){
                     teamPath.mkdirs();
-                } else {
+                }
+                else{
 
                     FileOutputStream teams = null;
 
+                    //Needed for error catching during instantiation and data creation
                     try {
-
                         File test = new File(teamPath, "teams.txt");
                         teams = new FileOutputStream(test);
-                        teams.write(teamsText.getText().toString().getBytes());
 
-                    } catch (FileNotFoundException e) {
+                        //The replaceAll removes spaces the Array can be read properly
+                        teams.write(teamsText.getText().toString().replaceAll("\\s","").getBytes());
+                    }
+                    catch (FileNotFoundException e){
                         e.printStackTrace();
-                    } catch (IOException e) {
+                    }
+                    catch (IOException e){
                         e.printStackTrace();
-                    } finally {
-                        if (teams != null) {
-                            try {
+                    }
+                    finally{
+                        if (teams != null){
+                            try{
                                 teams.close();
-                            } catch (IOException e) {
+                            }
+                            catch (IOException e)
+                            {
                                 e.printStackTrace();
                             }
                         }
@@ -73,7 +87,7 @@ public class TeamsList extends Fragment {
             }
         });
 
-
+        //Returns View
         return Teams;
     }
 

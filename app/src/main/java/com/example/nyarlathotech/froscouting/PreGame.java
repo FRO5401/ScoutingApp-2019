@@ -56,9 +56,9 @@ public class PreGame extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View pregameview = inflater.inflate(R.layout.fragment_pre_game, container, false);
+        View preGameView = inflater.inflate(R.layout.fragment_pre_game, container, false);
 
-        team_spinner = pregameview.findViewById(R.id.team_spinner);
+        team_spinner = preGameView.findViewById(R.id.team_spinner);
 
         try {
             String path = getExternalStorageDirectory().getAbsolutePath() + "/Scouting/Teams";
@@ -66,7 +66,8 @@ public class PreGame extends Fragment {
 
             if (!pathCreate.exists()) {
                 pathCreate.mkdirs();
-            } else {
+            }
+            else {
 
                     FileReader teams = new FileReader(path + "/teams.txt");
                     BufferedReader test = new BufferedReader(teams);
@@ -78,24 +79,27 @@ public class PreGame extends Fragment {
                     }
 
                 }
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e){
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        catch (IOException e){
             e.printStackTrace();
         }
 
         SharedPreferences MatchGetter = getContext().getSharedPreferences("MatchNum", Context.MODE_PRIVATE);
 
-        match = pregameview.findViewById(R.id.MatchText);
-        preName = pregameview.findViewById(R.id.NameText);
+        match = preGameView.findViewById(R.id.MatchText);
+        preName = preGameView.findViewById(R.id.NameText);
 
         if(MatchGetter.getString("match", "") == null || MatchGetter.getString("match", "").equals("")) {
             match.setText("1");
-        }else{
+        }
+        else{
             match.setText(MatchGetter.getString("match", ""));
         }
 
-        final RadioGroup position = pregameview.findViewById(R.id.PreGroup);
+        final RadioGroup position = preGameView.findViewById(R.id.PreGroup);
 
         position.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -103,13 +107,16 @@ public class PreGame extends Fragment {
                 if(position.getCheckedRadioButtonId() == R.id.Left){
                     Position = "1";
                     Toast.makeText(getContext(), Position, Toast.LENGTH_LONG).show();
-                } else if (position.getCheckedRadioButtonId() == R.id.Center){
+                }
+                else if (position.getCheckedRadioButtonId() == R.id.Center){
                     Position = "2";
                     Toast.makeText(getContext(), Position, Toast.LENGTH_LONG).show();
-                } else if (position.getCheckedRadioButtonId() == R.id.Right){
+                }
+                else if (position.getCheckedRadioButtonId() == R.id.Right){
                     Position = "3";
                     Toast.makeText(getContext(), Position, Toast.LENGTH_LONG).show();
-                } else {
+                }
+                else{
                     Position = "Else?";
                 }
             }
@@ -123,12 +130,12 @@ public class PreGame extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                //Don't do anything
             }
         });
 
 
-        AllowScout = pregameview.findViewById(R.id.AllowScout);
+        AllowScout = preGameView.findViewById(R.id.AllowScout);
 
         AllowScout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,14 +164,18 @@ public class PreGame extends Fragment {
             }
         });
 
-        return pregameview;
+        return preGameView;
 
     }
 
     private void onAllow(String Name, String Match, String Post){
-        if( (Name == "" || Name == null || Name == " " || Name.length() < 3) || (Match == "" || Match == null || Match == " ") || (Post == "Else?" || Post == null) || (Team == null || Team == "")){
+        if( (Name.length() < 3 ||  Name == null) ||
+            (Match == null || Match == "") ||
+            (Post == "Else?" || Post == null) ||
+            (Team == null || Team == "")){
             Snackbar.make(getView(), "Please make sure all fields are filled in!!", 3000).show();
-        } else if ( (Name != "") && (Match != "") && (Post != "" || Post != null)){
+        }
+        else{
             Bundle info = new Bundle();
             info.putString("Name", Name);
             info.putString("Team", Team);
@@ -181,7 +192,6 @@ public class PreGame extends Fragment {
 
             androidx.fragment.app.FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.FragMain, Scout).commit();
-
 
         }
     }

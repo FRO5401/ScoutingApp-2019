@@ -21,7 +21,7 @@ public class ScoutingOptions {
     }
 
     //Gets the type of card that it'll be (ADD/SUB, T/F, TEXTINPUT, ETC)
-    public String getCardType(){ return cardType;}
+    public String getCardType(){ return cardType.trim();}
 
     //Gets the title of the card (FUNCTION EX. AMOUNT OF JAWN)
     public String getCardTitle(){ return title;}

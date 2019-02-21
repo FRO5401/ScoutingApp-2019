@@ -1,6 +1,5 @@
 package com.example.nyarlathotech.froscouting;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 //Haven't added any yet lol but this class would just need
         //A BUNCH OF VIDEO PLAYERS INSTANTIATED PROBABLY

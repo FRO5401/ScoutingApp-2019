@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <GridView
+                <com.example.nyarlathotech.froscouting.CustomGrid
                     android:id="@+id/scouting_options"
                     android:layout_width="match_parent"
                     android:layout_height="3000dp"

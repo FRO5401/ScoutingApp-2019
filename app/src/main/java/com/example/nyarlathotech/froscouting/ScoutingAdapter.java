@@ -56,9 +56,6 @@ public class ScoutingAdapter extends BaseAdapter {
         return i;
     }
 
-    //Adds an extra/new card to the arra
-    public void addOption(ScoutingOptions option){ this.Options.add(option);}
-
     //Returns the data inputted by the user
     public String getScoutingData(int i){ return Options.get(i).getData(); }
 
@@ -68,7 +65,7 @@ public class ScoutingAdapter extends BaseAdapter {
         final ScoutingOptions so = (ScoutingOptions) this.getItem(i);
 
         //Creates add/subtract card
-        if (so.getCardType().equals("1") || so.getCardType().equals(" 1") || so.getCardType().equals("  1")) {
+        if (so.getCardType().equals("1")) {
 
             if (view == null) {
                 view = layoutInflate.inflate(R.layout.addsub_card, viewGroup, false);
@@ -77,6 +74,7 @@ public class ScoutingAdapter extends BaseAdapter {
             TextView NumberTitle = view.findViewById(R.id.subadd_title);
             NumberTitle.setText(so.getCardTitle());
 
+            //Sets it so that the number is zero
             final TextView Numbers = view.findViewById(R.id.number_text);
             Numbers.setText("0");
             so.setData("0");
@@ -84,31 +82,42 @@ public class ScoutingAdapter extends BaseAdapter {
             Button subtract =   view.findViewById(R.id.minus);
             Button addition = view.findViewById(R.id.plus);
 
+            //onClickListener allows for the user to subtract
             subtract.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String pastValue = Numbers.getText().toString();
-                    Numbers.setText(String.valueOf(Integer.valueOf(pastValue) - 1));
-                    so.setData(Numbers.getText().toString());
+                    //does not allow for the score to become negative
+                    if(Numbers.getText() != "0"){
+                        Numbers.setText(String.valueOf(Integer.valueOf(pastValue) - 1));
+                        so.setData(Numbers.getText().toString());
+                    }
                 }
             });
 
+            //onClickListener allows for the user to add
             addition.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String pastValue = Numbers.getText().toString();
-                    Numbers.setText(String.valueOf(Integer.valueOf(pastValue) + 1));
-                    so.setData(Numbers.getText().toString());
+                    //allows for a cap within scoring
+                    if(Numbers.getText() == "500"){
+                        Numbers.setText(String.valueOf(Integer.valueOf(pastValue) + 1));
+                        so.setData(Numbers.getText().toString());
+                    }
                 }
             });
 
+            //Creates different colored cards for each period of the game
             if (so.getCardPeriod().equals("auto") || so.getCardPeriod().equals(" auto")){
                 CardView subadd = view.findViewById(R.id.subadd_card);
                 subadd.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimaryLight));
-            } else if (so.getCardPeriod().equals("teleops") || so.getCardPeriod().equals(" teleops") || so.getCardPeriod().equals(" teleops ") || so.getCardPeriod().contains("te")){
+            }
+            else if (so.getCardPeriod().equals("teleops") || so.getCardPeriod().equals(" teleops") || so.getCardPeriod().equals(" teleops ") || so.getCardPeriod().contains("te")){
                 CardView subadd = view.findViewById(R.id.subadd_card);
                 subadd.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.white));
-            } else if (so.getCardPeriod().equals("end") || so.getCardPeriod().equals(" end")){
+            }
+            else if (so.getCardPeriod().equals("end") || so.getCardPeriod().equals(" end")){
                 CardView subadd = view.findViewById(R.id.subadd_card);
                 subadd.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.Red));
                 Numbers.setTextColor(mContext.getResources().getColor(R.color.white));
@@ -122,7 +131,7 @@ public class ScoutingAdapter extends BaseAdapter {
         }
 
         //Creates true/false card
-        if(so.getCardType().equals("2") || so.getCardType().equals(" 2") || so.getCardType().equals("  2")) {
+        if(so.getCardType().equals("2")) {
 
             if (view == null) {
                 view = layoutInflate.inflate(R.layout.checkbox_card, viewGroup, false);
@@ -130,13 +139,11 @@ public class ScoutingAdapter extends BaseAdapter {
                 TextView checkTitle = (TextView) view.findViewById(R.id.check_title);
                 checkTitle.setText(so.getCardTitle());
 
-
                 final RadioGroup checkGroup = (RadioGroup) view.findViewById(R.id.TrueFalseGroup);
                 final RadioButton trueBox = view.findViewById(R.id.trueBox);
                 final RadioButton falseBox = view.findViewById(R.id.falseBox);
 
-
-
+                //Changes int based off of which box is clicked
                 checkGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -152,14 +159,16 @@ public class ScoutingAdapter extends BaseAdapter {
 
                 falseBox.setChecked(true);
 
-
+                //Creates different colored cards for each period of the game
                 if (so.getCardPeriod().equals("auto") || so.getCardPeriod().equals(" auto")){
                     CardView checkbox = view.findViewById(R.id.checkbox_card);
                     checkbox.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimaryLight));
-                } else if (so.getCardPeriod().equals("teleops") || so.getCardPeriod().equals(" teleops") || so.getCardPeriod().equals(" teleops ")){
+                }
+                else if (so.getCardPeriod().equals("teleops") || so.getCardPeriod().equals(" teleops") || so.getCardPeriod().equals(" teleops ")){
                     CardView subadd = view.findViewById(R.id.checkbox_card);
                     subadd.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.white));
-                } else if (so.getCardPeriod().equals("end") || so.getCardPeriod().equals(" end")){
+                }
+                else if (so.getCardPeriod().equals("end") || so.getCardPeriod().equals(" end")){
                     CardView checkbox = view.findViewById(R.id.checkbox_card);
                     checkbox.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.Red));
                     checkTitle.setTextColor(mContext.getResources().getColor(R.color.white));
@@ -171,9 +180,10 @@ public class ScoutingAdapter extends BaseAdapter {
         }
 
         //Creates textInput card
-        if(so.getCardType().equals("3") || so.getCardType().equals(" 3") || so.getCardType().equals("  3")){
+        if(so.getCardType().equals("3")){
 
             if (view == null) {
+
                 view = layoutInflate.inflate(R.layout.textinput_card, viewGroup, false);
 
                 TextView inputTitle = (TextView) view.findViewById(R.id.textinput_title);
@@ -188,6 +198,7 @@ public class ScoutingAdapter extends BaseAdapter {
                 textInputEditText.setVerticalScrollBarEnabled(true);
                 textInputEditText.setMovementMethod(new ScrollingMovementMethod());
 
+                //Commits all text changes
                 textInputEditText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -205,7 +216,7 @@ public class ScoutingAdapter extends BaseAdapter {
                     }
                 });
 
-
+                //Creates different colored cards for each period of the game
                 if (so.getCardPeriod().equals("auto") || so.getCardPeriod().equals(" auto")){
                     CardView text = view.findViewById(R.id.textinputcard);
                     text.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimaryLight));
@@ -224,9 +235,10 @@ public class ScoutingAdapter extends BaseAdapter {
         }
 
         //Creates multiple choice card
-        if(so.getCardType().equals("4") || so.getCardType().equals(" 4") || so.getCardType().equals("  4")){
+        if(so.getCardType().equals("4")){
 
             if (view == null) {
+
                 view = layoutInflate.inflate(R.layout.choice_card, viewGroup, false);
 
                 TextView choiceTitle = (TextView) view.findViewById(R.id.choice_title);
@@ -243,16 +255,20 @@ public class ScoutingAdapter extends BaseAdapter {
 
                 final RadioGroup choiceGroup = (RadioGroup) view.findViewById(R.id.ChoiceGroup);
 
+                //Returns certain int to represent a piece of data
                 choiceGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup radioGroup, int i) {
                         if(choiceGroup.getCheckedRadioButtonId() == R.id.Choice1){
                             so.setData("1");
-                        } else if (choiceGroup.getCheckedRadioButtonId() == R.id.Choice2){
+                        }
+                        else if (choiceGroup.getCheckedRadioButtonId() == R.id.Choice2){
                             so.setData("2");
-                        } else if (choiceGroup.getCheckedRadioButtonId() == R.id.Choice3){
+                        }
+                        else if (choiceGroup.getCheckedRadioButtonId() == R.id.Choice3){
                             so.setData("3");
-                        } else {
+                        }
+                        else{
                             so.setData("0.0");
                         }
                     }
@@ -260,14 +276,16 @@ public class ScoutingAdapter extends BaseAdapter {
 
                 choice1.setChecked(true);
 
-
+                //Creates different colored cards for each period of the game
                 if (so.getCardPeriod().equals("auto") || so.getCardPeriod().equals(" auto")){
                     CardView choice = view.findViewById(R.id.choice_card);
                     choice.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.colorPrimaryLight));
-                } else if (so.getCardPeriod().equals("teleops") || so.getCardPeriod().equals(" teleops") || so.getCardPeriod().equals(" teleops ")){
+                }
+                else if (so.getCardPeriod().equals("teleops") || so.getCardPeriod().equals(" teleops") || so.getCardPeriod().equals(" teleops ")){
                     CardView choice = view.findViewById(R.id.choice_card);
                     choice.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.white));
-                } else if (so.getCardPeriod().equals("end") || so.getCardPeriod().equals(" end")){
+                }
+                else if (so.getCardPeriod().equals("end") || so.getCardPeriod().equals(" end")){
                     CardView choice = view.findViewById(R.id.choice_card);
                     choice.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.Red));
                     choiceTitle.setTextColor(mContext.getResources().getColor(R.color.white));
@@ -277,14 +295,16 @@ public class ScoutingAdapter extends BaseAdapter {
                 }
 
             }
+        }
 
-         //Creates placeholder card
-        } else if(so.getCardType().equals("5") || so.getCardType().equals(" 5") || so.getCardType().equals("  5")){
+        //Creates placeholder card
+        if(so.getCardType().equals("5")){
             if (view == null) {
                 view = layoutInflate.inflate(R.layout.placeholder_card, viewGroup, false);
             }
         }
 
+        //Returns View
         return view;
     }
 
